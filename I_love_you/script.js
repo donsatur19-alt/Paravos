@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const stroke = document.getElementById("heartStroke");
 
   const mensajes = [
-    "Te quiero mucho ❤️",
-    "I love you",
-    "TQM, pendejo",
-    "Estoy para lo que necesites",
-    "Baboso-"
+    "Te quiero mucho ,lo sabes?",
+    "I love you,idiot",
+    "Tqm,pendejo",
+    "Estoy para lo que necesites,bueno?",
+    "teamu-"
   ];
 
   const coloresMensajes = [
@@ -103,3 +103,4 @@ document.addEventListener("DOMContentLoaded", () => {
     img.src = url;
   });
 });
+

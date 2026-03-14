@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Cumple Caleb</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    background: radial-gradient(circle,#001a33,#000814);
+    font-family: Arial;
+    text-align:center;
+}
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-image:radial-gradient(white 2px, transparent 2px);
+    background-size:80px 80px;
+    opacity:0.4;
+    pointer-events:none;
+}
+h1{
+    margin-top:40px;
+    color:white;
+    text-shadow:0 0 10px #00c3ff;
+    font-size:40px;
+}
+p{
+    color:white;
+}
+
+#carta{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:300px;
+    background:#000000;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(0,0,0,0.6);
+    display:none;
+}
+#chibi{
+    position:absolute;
+    bottom:-20px;
+    left:50%;
+    transform:translateX(-60%);
+    width:400px;
+}
+button{
+    margin:10px;
+    padding:10px 20px;
+    font-size:18px;
+    border:none;
+    border-radius:20px;
+    background:hsl(221, 100%, 50%);
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:hsl(231, 97%, 56%);
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Feliz Cumpleaños</h1>
+<p>No es el mejor regalo pero algo es algo</p>
+
+<button onclick="abrirCarta()">Abrir carta 💌</button>
+<button onclick="bailar()">Toca para que Taylor Baile</button>
+
+<div id="carta">
+<h2>💌</h2>
+<p>
+Hola Caleb...Pues la verdad te queria desear un feliz cumpleaños.
+<p>Quiero que sepas que siempre voy a estar para ti. Eres mi hermano, siempre te voy a apoyar en todo.
+<p>Para lo que necesesites..Siempre...
+<br><br>
+Con amor, Alex.
+</p>
+
+<button onclick="cerrarCarta()">Cerrar carta</button>
+</div>
+
+<img id="chibi" src="chibi.png">
+
+<audio id="musica" loop>
+<source src="Taylor.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+let chibi = document.getElementById("chibi");
+let musica = document.getElementById("musica");
+
+let pos = window.innerWidth / 2;
+let direccion = 1;
+let bailando = false;
+let movimiento;
+
+
+function abrirCarta(){
+    document.getElementById("carta").style.display="block";
+}
+
+
+
+function cerrarCarta(){
+    document.getElementById("carta").style.display="none";
+}
+
+
+function mover(){
+
+    pos += 3 * direccion;
+
+    if(pos > window.innerWidth - 150 || pos < 0){
+        direccion *= -1;
+        chibi.style.transform = "scaleX(" + direccion + ")";
+    }
+
+    chibi.style.left = pos + "px";
+}
+
+function bailar(){
+
+    if(bailando) return;
+
+    bailando = true;
+
+    musica.play();
+
+    movimiento = setInterval(mover,30);
+
+    setInterval(()=>{
+        chibi.style.transform =
+        "rotate("+(Math.random()*20-10)+"deg) scaleX("+direccion+")";
+    },200)
+
+}
+</script>
+</body>
+</html>
